@@ -6,6 +6,10 @@ location tablosuna longitude and latitude eklenicek ne olduklarını araştırma
 
 rent crud işlemleri sıkıntılı kontrol et!! ++
 
-auth işlemleri eklenecek. 
+auth işlemleri eklenecek. ++
 
-kullanıcılar typelarına göre ayrılacak
+kullanıcılar typelarına göre ayrılacak++
+
+
+
+jwt eklendi token kontrolü yapıldı.

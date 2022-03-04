@@ -42,9 +42,25 @@ const updateUser = async (req, res) => {
   res.status(200).json({ message: "User updated" });
 };
 
+const getUserByType = async (req, res) => {
+  let typeId = req.params.typeId;
+  let users = await db.User.findAll({
+    where: {
+      typeId: typeId,
+    },
+    include: [
+      {
+        model: db.Type,
+        as: "type",
+      },
+    ],
+  });
+  res.status(200).json(users);
+};
 module.exports = {
   addUser,
   getUsers,
   deleteUser,
+  getUserByType,
   updateUser,
 };

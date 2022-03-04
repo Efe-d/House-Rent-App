@@ -1,29 +1,15 @@
-const db = require("../models");
-
-const jwt = require("jsonwebtoken");
-
-const bcypt = require("bcrypt");
-
-const Register = async (req, res) => {
-  let info = {
+const AuthService = require("../service/authService");
+const authService = new AuthService();
+const Register = async (req, res) => {  
+  const info = {
     userName: req.body.userName,
     password: req.body.password,
     typeId: req.body.typeId,
   };
 
-  const user = await db.User.findOne({
-    where: {
-      userName: info.userName,
-    },
-  });
-  if (user) {
-    res.status(200).json({
-      message: "User already exists",
-    });
-  } else {
-    const newUser = await db.User.create(info);
-    res.status(200).json(newUser);
-  }
+  //check if userName already exists
+  const user = await authService.register(info);
+  res.stastus(200).json(user);
 };
 
 const Login = async (req, res) => {
